@@ -1,0 +1,30 @@
+# Yapscape
+
+> Yapscape is a social listening and marketing intelligence platform for marketing agencies and in-house teams. It gathers what people are saying about your brand, your competitors and your category across social platforms, spots what is actually changing, and turns it into a recommendation tailored to you.
+
+Yapscape is in limited early access. Example data is shown throughout the website.
+
+## How it works
+
+- Listen: Yapscape gathers what people are saying about you, your competitors, and your category, across the platforms that matter (including Instagram, TikTok, YouTube, X, Reddit, Threads, Facebook and LinkedIn; coverage varies by platform during early access).
+- Spot: it sorts out what is actually changing. A rising complaint, a competitor's new angle, a shift in what people want.
+- Act: it turns that into a recommendation tailored to you and what is going on in your landscape.
+
+## Who it is for
+
+Marketing agencies and in-house marketing teams: the founders, strategists and social media managers who need to know what their audience thinks before they brief, post or respond.
+
+## When teams use it
+
+- Before you brief a campaign: know what your audience actually thinks before you put anything in front of them.
+- Before a competitor's next move: see what they are doing, and catch the shift early enough to lead it.
+- Once a campaign goes live: track campaign engagement and how sentiment lands.
+
+## Data and privacy
+
+Yapscape reads publicly available posts, comments and reviews. It does not buy private data and never sells what it collects. Reads and recommendations act as guidance and insights only.
+
+## Links
+
+- [Homepage](https://www.getyapscape.com/): product overview, demo video and FAQ
+- [Request early access](https://www.getyapscape.com/#early-access): onboarding starts with a Yapscape analysis of your own brand
