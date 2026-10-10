@@ -142,14 +142,12 @@
     .btn[disabled] { opacity: 0.7; cursor: progress; }
 
     /* ---------- nav ---------- */
-    /* top of page: bar is invisible and lines up with the content edges.
-       scrolled (or menu open): it becomes a glass pill hugging its contents,
-       with the logo mark and the button concentric with the pill's round ends. */
-    .nav { --gutter: 32px; position: fixed; top: 0; left: 0; right: 0; z-index: 50; padding: 20px var(--gutter) 0; transition: padding 0.45s var(--ease); }
-    .nav-bar { display: flex; align-items: center; max-width: 1136px; margin: 0 auto; padding: 8px 0; border-radius: 999px; transition: max-width 0.55s var(--ease), padding 0.55s var(--ease), background-color 0.3s, box-shadow 0.3s, backdrop-filter 0.3s, -webkit-backdrop-filter 0.3s; }
-    .nav.solid { padding-top: 12px; }
-    .nav.solid .nav-bar { padding: 8px 8px 8px 14px; background: rgba(255, 255, 255, 0.78); box-shadow: 0 0 0 1px rgba(21, 53, 92, 0.07), 0 12px 32px -16px rgba(23, 54, 97, 0.35); backdrop-filter: blur(16px) saturate(1.4); -webkit-backdrop-filter: blur(16px) saturate(1.4); }
-    @media (min-width: 821px) { .nav.solid .nav-bar { max-width: var(--pill, 640px); } }
+    /* one geometry in every state: the bar sits 8px outside the content edges with an
+       8px inset, so the logo and the button/hamburger stay on the content edges.
+       scrolling (or opening the menu) only fades the glass background in. */
+    .nav { --gutter: 32px; position: fixed; top: 0; left: 0; right: 0; z-index: 50; padding: 14px calc(var(--gutter) - 8px) 0; }
+    .nav-bar { display: flex; align-items: center; max-width: 1152px; margin: 0 auto; padding: 8px; border-radius: 999px; background: rgba(255, 255, 255, 0); box-shadow: 0 0 0 1px rgba(21, 53, 92, 0), 0 12px 32px -16px rgba(23, 54, 97, 0); transition: background-color 0.35s ease, box-shadow 0.35s ease, backdrop-filter 0.35s ease, -webkit-backdrop-filter 0.35s ease; }
+    .nav.solid .nav-bar { background: rgba(255, 255, 255, 0.78); box-shadow: 0 0 0 1px rgba(21, 53, 92, 0.07), 0 12px 32px -16px rgba(23, 54, 97, 0.35); backdrop-filter: blur(16px) saturate(1.4); -webkit-backdrop-filter: blur(16px) saturate(1.4); }
     .logo { flex: none; display: block; border-radius: 999px; }
     .logo img { height: 30px; width: auto; }
     .nav-links { display: flex; align-items: center; gap: 28px; margin-left: auto; font-size: 14.5px; font-weight: 700; color: var(--navy-2); white-space: nowrap; }
@@ -159,14 +157,13 @@
     .nav-links > a:not(.btn):hover::after, .nav-links > a[aria-current]::after { transform: scaleX(1); transform-origin: left; }
     .nav-links > a[aria-current] { color: var(--blue); }
     .nav-links .btn { margin-left: 4px; }
-    .menu-btn { display: none; flex: none; flex-direction: column; align-items: center; justify-content: center; gap: 5px; width: 44px; height: 44px; margin: 0 -12px 0 auto; padding: 0; border: 0; border-radius: 50%; background: transparent; cursor: pointer; transition: margin 0.55s var(--ease), background-color 0.2s; }
-    .nav.solid .menu-btn { margin-right: 0; }
+    .menu-btn { display: none; flex: none; flex-direction: column; align-items: center; justify-content: center; gap: 5px; width: 44px; height: 44px; margin-left: auto; padding: 0; border: 0; border-radius: 50%; background: transparent; cursor: pointer; transition: background-color 0.2s; }
     .menu-btn:hover { background: var(--blue-50); }
     .menu-btn span { width: 20px; height: 2px; border-radius: 2px; background: var(--navy-2); transition: transform 0.3s var(--ease), opacity 0.2s; }
     .menu-btn[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
     .menu-btn[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
     .menu-btn[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-    .menu { display: flex; flex-direction: column; max-width: 1136px; margin: 8px auto 0; padding: 8px; border-radius: 24px; background: rgba(255, 255, 255, 0.94); box-shadow: 0 0 0 1px rgba(21, 53, 92, 0.07), 0 20px 44px -18px rgba(23, 54, 97, 0.45); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); transform-origin: top; animation: menuIn 0.35s var(--ease); }
+    .menu { display: flex; flex-direction: column; max-width: 1152px; margin: 8px auto 0; padding: 8px; border-radius: 24px; background: rgba(255, 255, 255, 0.94); box-shadow: 0 0 0 1px rgba(21, 53, 92, 0.07), 0 20px 44px -18px rgba(23, 54, 97, 0.45); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); transform-origin: top; animation: menuIn 0.35s var(--ease); }
     .menu[hidden] { display: none; }
     .menu a:not(.btn) { display: flex; align-items: center; min-height: 48px; padding: 0 14px; border-radius: 16px; font-size: 16px; font-weight: 800; color: var(--navy-2); transition: background-color 0.2s; }
     .menu a:not(.btn):hover { background: var(--blue-50); }
@@ -207,10 +204,11 @@
 
     /* fan of posts */
     .fan { --cw: clamp(130px, 11.6vw, 184px); display: flex; justify-content: center; align-items: center; margin-top: 30px; padding: calc(var(--cw) * 0.55) 0 64px; overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent); mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent); }
-    .card { position: relative; z-index: var(--z); flex: none; display: flex; flex-direction: column; width: var(--cw); height: calc(var(--cw) * 1.19); margin: 0 calc(var(--cw) * -0.04); padding: calc(var(--cw) * 0.085) calc(var(--cw) * 0.1); text-align: left; font-size: calc(var(--cw) * 0.088); line-height: 1.42; color: #16304f; background: #fff; border: 1px solid rgba(21, 53, 92, 0.09); border-radius: 14px; box-shadow: 0 18px 34px -18px rgba(21, 53, 92, 0.45); rotate: var(--r); translate: 0 calc(var(--y) * var(--cw)); animation: deal 1.2s var(--ease) both, float 7s ease-in-out infinite; animation-delay: calc(var(--k) * 90ms + 500ms), calc(var(--k) * 350ms + 1800ms); transition: transform 0.4s var(--ease), box-shadow 0.4s; }
-    .card:hover { z-index: 30; transform: translateY(-12px) scale(1.05); box-shadow: 0 30px 50px -22px rgba(21, 53, 92, 0.5); }
-    @keyframes deal { from { opacity: 0; rotate: 0deg; translate: 0 calc(var(--y) * var(--cw) + 80px); } }
-    @keyframes float { 50% { translate: 0 calc(var(--y) * var(--cw) - 7px); } }
+    .card { position: relative; z-index: var(--z); flex: none; display: flex; flex-direction: column; width: var(--cw); height: calc(var(--cw) * 1.19); margin: 0 calc(var(--cw) * -0.04); padding: calc(var(--cw) * 0.085) calc(var(--cw) * 0.1); text-align: left; font-size: calc(var(--cw) * 0.088); line-height: 1.42; color: #16304f; background: #fff; border: 1px solid rgba(21, 53, 92, 0.09); border-radius: 14px; box-shadow: 0 18px 34px -18px rgba(21, 53, 92, 0.45); rotate: var(--r); translate: 0 calc(var(--y) * var(--yk, 1) * var(--cw)); animation: deal 1.2s var(--ease) both, float 7s ease-in-out infinite; animation-delay: calc(var(--k) * 90ms + 500ms), calc(var(--k) * 350ms + 1800ms); transition: transform 0.4s var(--ease), box-shadow 0.4s; }
+    @media (hover: hover) { .card:hover { z-index: 30; transform: translateY(-12px) scale(1.05); box-shadow: 0 30px 50px -22px rgba(21, 53, 92, 0.5); } }
+    .fan-dots { display: none; }
+    @keyframes deal { from { opacity: 0; rotate: 0deg; translate: 0 calc(var(--y) * var(--yk, 1) * var(--cw) + 80px); } }
+    @keyframes float { 50% { translate: 0 calc(var(--y) * var(--yk, 1) * var(--cw) - 7px); } }
     .card .src { height: calc(var(--cw) * 0.093); width: auto; margin-bottom: 0.7em; object-fit: contain; object-position: left; }
     .card .txt { flex: 1; }
     .card .meta { margin-top: 0.6em; font-size: 0.82em; color: var(--muted); }
@@ -385,12 +383,17 @@
     @media (max-width: 720px) {
       .wrap { padding: 0 20px; }
       .nav { --gutter: 20px; }
-      .nav.solid { padding-left: 12px; padding-right: 12px; }
       .hero { padding-top: 118px; }
       .hero h1 { font-size: clamp(38px, 10.4vw, 48px); }
       .lede { font-size: 17px; }
-      .fan { --cw: 34vw; padding-bottom: 40px; }
-      .card:nth-child(-n+2), .card:nth-child(n+8) { display: none; }
+      /* phone: the fan becomes a swipeable carousel that snaps each card to the centre */
+      .fan { --cw: 40vw; --yk: 0.3; justify-content: flex-start; padding: calc(var(--cw) * 0.3 + 24px) calc(50vw - var(--cw) / 2) 64px; overflow-x: auto; overflow-y: hidden; scroll-snap-type: x mandatory; overscroll-behavior-x: contain; scrollbar-width: none; -webkit-mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent); mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent); }
+      .fan::-webkit-scrollbar { display: none; }
+      .card { scroll-snap-align: center; scroll-snap-stop: always; }
+      .card-yap { margin-left: calc(var(--cw) * 0.06); margin-right: calc(var(--cw) * 0.06); }
+      .fan-dots { display: flex; justify-content: center; gap: 6px; margin-top: -30px; padding-bottom: 36px; position: relative; }
+      .fan-dots i { width: 6px; height: 6px; border-radius: 3px; background: rgba(28, 102, 193, 0.22); transition: width 0.3s var(--ease), background-color 0.3s; }
+      .fan-dots i.on { width: 18px; background: var(--blue); }
       .section { padding: 88px 0; }
       .signal-panel { grid-template-columns: minmax(0, 1fr); gap: 20px; padding: 56px 20px 24px; }
       .funnel { display: none; }
@@ -461,6 +464,7 @@
         <div class="card" style="--r:5.2deg;--y:-.26;--z:7;--k:3"><img class="src" src="assets/logos/facebook.png" width="234" height="48" alt="Facebook"><p class="txt">Skincare Swap SG: anyone want to trade the new formula, unused</p><p class="meta">group post · 38 comments</p></div>
         <div class="card" style="--r:7deg;--y:-.4;--z:6;--k:4"><img class="src" src="assets/logos/linkedin.png" width="192" height="48" alt="LinkedIn"><p class="txt">Skincare brands are quietly going fragrance free this quarter</p><p class="meta">post · 1.4k reactions</p></div>
       </div>
+      <div class="fan-dots" aria-hidden="true"></div>
     </section>
 
     <section class="platforms" aria-label="Platforms">
@@ -721,14 +725,6 @@
     addEventListener('scroll', onScroll, { passive: true });
     onScroll();
 
-    // the desktop pill hugs its contents: logo + links + insets + a fixed gap
-    const fitPill = () => {
-      const logo = bar.querySelector('.logo'), links = bar.querySelector('.nav-links');
-      nav.style.setProperty('--pill', Math.ceil(logo.offsetWidth + links.scrollWidth + 14 + 8 + 56) + 'px');
-    };
-    fitPill();
-    if (document.fonts) document.fonts.ready.then(fitPill);
-
     const setMenu = (open, refocus) => {
       menu.hidden = !open;
       menuBtn.setAttribute('aria-expanded', open);
@@ -740,7 +736,7 @@
     menu.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => setMenu(false)));
     addEventListener('keydown', (e) => { if (e.key === 'Escape' && !menu.hidden) setMenu(false, true); });
     document.addEventListener('click', (e) => { if (!menu.hidden && !nav.contains(e.target)) setMenu(false); });
-    addEventListener('resize', () => { fitPill(); if (innerWidth > 820 && !menu.hidden) setMenu(false); });
+    addEventListener('resize', () => { if (innerWidth > 820 && !menu.hidden) setMenu(false); });
 
     // disclosure buttons: privacy, terms
     document.querySelectorAll('.pill[aria-controls]').forEach((b) => b.addEventListener('click', () => {
@@ -755,6 +751,32 @@
       if (e.isIntersecting) links.forEach((a) => a.hash === '#' + e.target.id ? a.setAttribute('aria-current', 'true') : a.removeAttribute('aria-current'));
     }), { rootMargin: '-45% 0px -50% 0px' });
     document.querySelectorAll('main section[id]').forEach((sec) => spy.observe(sec));
+
+    // phone: the fan is a swipeable carousel; open it on the Yapscape card and keep the dots in sync
+    const fan = document.querySelector('.fan');
+    const cards = [...fan.children];
+    const dotsBox = document.querySelector('.fan-dots');
+    cards.forEach(() => dotsBox.append(document.createElement('i')));
+    const dots = [...dotsBox.children];
+    const centerOn = (el) => { fan.scrollLeft = el.offsetLeft + el.offsetWidth / 2 - fan.clientWidth / 2; };
+    const syncDots = () => {
+      const mid = fan.scrollLeft + fan.clientWidth / 2;
+      let best = 0;
+      cards.forEach((c, i) => { if (Math.abs(c.offsetLeft + c.offsetWidth / 2 - mid) < Math.abs(cards[best].offsetLeft + cards[best].offsetWidth / 2 - mid)) best = i; });
+      dots.forEach((d, i) => d.classList.toggle('on', i === best));
+    };
+    fan.addEventListener('scroll', syncDots, { passive: true });
+    // start on the middle (Yapscape) card whenever the carousel layout kicks in,
+    // and again after load, unless the visitor has already swiped
+    const phone = matchMedia('(max-width: 720px)');
+    let swiped = false;
+    fan.addEventListener('pointerdown', () => { swiped = true; }, { passive: true });
+    fan.addEventListener('touchstart', () => { swiped = true; }, { passive: true });
+    const startMiddle = () => { if (phone.matches && !swiped) centerOn(fan.querySelector('.card-yap')); syncDots(); };
+    startMiddle();
+    phone.addEventListener('change', () => { swiped = false; startMiddle(); });
+    addEventListener('load', startMiddle);
+    if (document.fonts) document.fonts.ready.then(startMiddle);
 
     // scroll reveals
     const io = new IntersectionObserver((entries) => entries.forEach((e) => {
