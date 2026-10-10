@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
   <url>
     <loc>https://www.getyapscape.com/</loc>
+    <lastmod>2026-10-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <video:video>
+      <video:thumbnail_loc>https://www.getyapscape.com/assets/demo-poster.jpg</video:thumbnail_loc>
+      <video:title>Yapscape analysis demo</video:title>
+      <video:description>A Yapscape analysis of a skincare brand: listening across platforms, spotting what is changing, and turning it into a recommendation.</video:description>
+      <video:content_loc>https://www.getyapscape.com/yapscape-demo-loop.mp4</video:content_loc>
+      <video:duration>36</video:duration>
+    </video:video>
   </url>
 </urlset>
