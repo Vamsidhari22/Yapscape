@@ -28,3 +28,8 @@ Yapscape reads publicly available posts, comments and reviews. It does not buy p
 
 - [Homepage](https://www.getyapscape.com/): product overview, demo video and FAQ
 - [Request early access](https://www.getyapscape.com/#early-access): onboarding starts with a Yapscape analysis of your own brand
+- [Social listening for marketing agencies](https://www.getyapscape.com/use-cases/agencies/): how agencies use Yapscape for briefs, competitor moves and live campaigns
+- [Social listening for in-house teams](https://www.getyapscape.com/use-cases/in-house-teams/): for founders, brand leads and social media managers
+- [Reddit social listening](https://www.getyapscape.com/platforms/reddit/): why Reddit matters for brands and how Yapscape reads it
+- [TikTok social listening](https://www.getyapscape.com/platforms/tiktok/): trends, dupes and comments on TikTok
+- [Privacy policy](https://www.getyapscape.com/privacy/) and [Terms of use](https://www.getyapscape.com/terms/)

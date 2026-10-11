@@ -2,9 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
   <url>
     <loc>https://www.getyapscape.com/</loc>
-    <lastmod>2026-10-10</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
+    <lastmod>2026-10-11</lastmod>
     <video:video>
       <video:thumbnail_loc>https://www.getyapscape.com/assets/demo-poster.jpg</video:thumbnail_loc>
       <video:title>Yapscape analysis demo</video:title>
@@ -12,5 +10,29 @@
       <video:content_loc>https://www.getyapscape.com/yapscape-demo-loop.mp4</video:content_loc>
       <video:duration>36</video:duration>
     </video:video>
+  </url>
+  <url>
+    <loc>https://www.getyapscape.com/use-cases/agencies/</loc>
+    <lastmod>2026-10-11</lastmod>
+  </url>
+  <url>
+    <loc>https://www.getyapscape.com/use-cases/in-house-teams/</loc>
+    <lastmod>2026-10-11</lastmod>
+  </url>
+  <url>
+    <loc>https://www.getyapscape.com/platforms/reddit/</loc>
+    <lastmod>2026-10-11</lastmod>
+  </url>
+  <url>
+    <loc>https://www.getyapscape.com/platforms/tiktok/</loc>
+    <lastmod>2026-10-11</lastmod>
+  </url>
+  <url>
+    <loc>https://www.getyapscape.com/privacy/</loc>
+    <lastmod>2026-10-11</lastmod>
+  </url>
+  <url>
+    <loc>https://www.getyapscape.com/terms/</loc>
+    <lastmod>2026-10-11</lastmod>
   </url>
 </urlset>
