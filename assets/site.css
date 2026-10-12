@@ -372,3 +372,11 @@ html.js .signal-panel:not(.in) .signal { opacity: 0; transform: translateX(30px)
   *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; animation-delay: 0ms !important; transition-duration: 0.01ms !important; transition-delay: 0ms !important; }
   html.js [data-reveal] { opacity: 1; transform: none; }
 }
+
+/* cookie consent */
+.consent { position: fixed; left: 16px; bottom: 16px; z-index: 60; max-width: 380px; padding: 18px; font-size: 14.5px; line-height: 1.5; color: var(--text); background: rgba(255, 255, 255, 0.97); border-radius: 18px; box-shadow: 0 0 0 1px rgba(21, 53, 92, 0.08), 0 24px 50px -20px rgba(23, 54, 97, 0.45); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); animation: fadeUp 0.5s var(--ease) 0.8s both; }
+.consent a { color: var(--blue); font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+.consent-actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 14px; }
+.foot-btn { padding: 0; font: inherit; color: var(--text); background: none; border: 0; cursor: pointer; transition: color 0.2s; }
+.foot-btn:hover { color: var(--blue); }
+@media (max-width: 720px) { .consent { left: 12px; right: 12px; bottom: 12px; max-width: none; } .consent-actions .btn { flex: 1; } }

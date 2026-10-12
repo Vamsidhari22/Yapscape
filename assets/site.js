@@ -39,3 +39,48 @@
   }), { threshold: 0.18, rootMargin: '0px 0px -40px 0px' });
   document.querySelectorAll('[data-reveal]').forEach((el) => io.observe(el));
 })();
+
+// analytics: Clarity loads, and Google Analytics may set cookies, only after the visitor accepts
+(() => {
+  const KEY = 'yap-cookie-consent';
+  const get = () => { try { return localStorage.getItem(KEY); } catch (_) { return null; } };
+  const set = (v) => { try { localStorage.setItem(KEY, v); } catch (_) {} };
+  const loadClarity = () => {
+    if (window.clarity) return;
+    (function(c,l,a,r,i,t,y){
+      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "yw6fny47kl");
+  };
+  const clearClarityCookies = () => ['_clck', '_clsk', '_ga', '_ga_WH7ZEEDEK9'].forEach((n) => {
+    document.cookie = n + '=; Max-Age=0; path=/';
+    document.cookie = n + '=; Max-Age=0; path=/; domain=.' + location.hostname.replace(/^www\./, '');
+  });
+
+  let banner;
+  const showBanner = () => {
+    if (banner) return banner.querySelector('button').focus();
+    banner = document.createElement('div');
+    banner.className = 'consent';
+    banner.setAttribute('role', 'region');
+    banner.setAttribute('aria-label', 'Cookie consent');
+    banner.innerHTML = '<p>We use cookies from Google Analytics and Microsoft Clarity to see how people use this site, so we can improve it. <a href="/privacy/">Privacy policy</a></p>' +
+      '<div class="consent-actions"><button class="btn btn-ghost btn-sm" type="button" data-choice="denied">Decline</button>' +
+      '<button class="btn btn-primary btn-sm" type="button" data-choice="granted">Accept</button></div>';
+    banner.addEventListener('click', (e) => {
+      const choice = e.target.closest('[data-choice]')?.dataset.choice;
+      if (!choice) return;
+      const was = get();
+      set(choice);
+      banner.remove(); banner = null;
+      if (choice === 'granted') { loadClarity(); if (window.gtag) gtag('consent', 'update', { analytics_storage: 'granted' }); }
+      else if (was === 'granted') { clearClarityCookies(); location.reload(); } // withdraw: stop the running script
+    });
+    document.body.append(banner);
+  };
+
+  if (get() === 'granted') loadClarity();
+  else if (get() !== 'denied') showBanner();
+  document.querySelectorAll('[data-cookie-settings]').forEach((b) => b.addEventListener('click', showBanner));
+})();
