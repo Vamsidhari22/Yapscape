@@ -40,7 +40,7 @@
   document.querySelectorAll('[data-reveal]').forEach((el) => io.observe(el));
 })();
 
-// analytics: Microsoft Clarity only loads after the visitor accepts cookies
+// analytics: Clarity loads, and Google Analytics may set cookies, only after the visitor accepts
 (() => {
   const KEY = 'yap-cookie-consent';
   const get = () => { try { return localStorage.getItem(KEY); } catch (_) { return null; } };
@@ -53,7 +53,7 @@
       y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
     })(window, document, "clarity", "script", "yw6fny47kl");
   };
-  const clearClarityCookies = () => ['_clck', '_clsk'].forEach((n) => {
+  const clearClarityCookies = () => ['_clck', '_clsk', '_ga', '_ga_WH7ZEEDEK9'].forEach((n) => {
     document.cookie = n + '=; Max-Age=0; path=/';
     document.cookie = n + '=; Max-Age=0; path=/; domain=.' + location.hostname.replace(/^www\./, '');
   });
@@ -65,7 +65,7 @@
     banner.className = 'consent';
     banner.setAttribute('role', 'region');
     banner.setAttribute('aria-label', 'Cookie consent');
-    banner.innerHTML = '<p>We use cookies from Microsoft Clarity to see how people use this site, so we can improve it. <a href="/privacy/">Privacy policy</a></p>' +
+    banner.innerHTML = '<p>We use cookies from Google Analytics and Microsoft Clarity to see how people use this site, so we can improve it. <a href="/privacy/">Privacy policy</a></p>' +
       '<div class="consent-actions"><button class="btn btn-ghost btn-sm" type="button" data-choice="denied">Decline</button>' +
       '<button class="btn btn-primary btn-sm" type="button" data-choice="granted">Accept</button></div>';
     banner.addEventListener('click', (e) => {
@@ -74,7 +74,7 @@
       const was = get();
       set(choice);
       banner.remove(); banner = null;
-      if (choice === 'granted') loadClarity();
+      if (choice === 'granted') { loadClarity(); if (window.gtag) gtag('consent', 'update', { analytics_storage: 'granted' }); }
       else if (was === 'granted') { clearClarityCookies(); location.reload(); } // withdraw: stop the running script
     });
     document.body.append(banner);
