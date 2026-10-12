@@ -53,7 +53,7 @@
       y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
     })(window, document, "clarity", "script", "yw6fny47kl");
   };
-  const clearClarityCookies = () => ['_clck', '_clsk', '_ga', '_ga_WH7ZEEDEK9'].forEach((n) => {
+  const clearClarityCookies = () => ['_clck', '_clsk', '_ga', '_ga_P0SG9B8C4T'].forEach((n) => {
     document.cookie = n + '=; Max-Age=0; path=/';
     document.cookie = n + '=; Max-Age=0; path=/; domain=.' + location.hostname.replace(/^www\./, '');
   });
