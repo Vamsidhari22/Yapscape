@@ -58,7 +58,10 @@
         "name": "Yapscape",
         "url": "https://www.getyapscape.com/",
         "logo": "https://www.getyapscape.com/favicon.png",
-        "description": "Social listening and marketing intelligence for marketing agencies and in-house teams."
+        "description": "Social listening and marketing intelligence for marketing agencies and in-house teams.",
+        "email": "hello@getyapscape.com",
+        "sameAs": ["https://www.linkedin.com/company/yapscape/"],
+        "contactPoint": { "@type": "ContactPoint", "contactType": "customer support", "email": "hello@getyapscape.com" }
       },
       {
         "@type": "WebSite",
@@ -348,7 +351,7 @@
         <div class="section-head" data-reveal>
           <span class="eyebrow">FAQ</span>
           <h2 class="h2">Frequently asked <em>questions</em></h2>
-          <p>Something we haven’t covered? Ask us when you sign up for early access.</p>
+          <p>Something we haven’t covered? Get in touch at <a href="mailto:hello@getyapscape.com">hello@getyapscape.com</a>.</p>
         </div>
         <div class="faq-list" data-reveal style="--d:120ms">
           <details open>
@@ -394,6 +397,7 @@
             <ul class="perks">
               <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 8.5 3.2 3L13 4.5"/></svg>Your first Yapscape analysis is of your own brand</li>
             </ul>
+            <p class="cta-mail">Prefer email? Get in touch at <a href="mailto:hello@getyapscape.com">hello@getyapscape.com</a></p>
           </div>
 
           <form class="form" id="signup" action="https://formspree.io/f/mbgjzdnv" method="POST">
@@ -433,6 +437,8 @@
         <div class="foot-brand">
           <a href="/" aria-label="Yapscape home"><img src="/assets/logo.png" alt="Yapscape" width="340" height="84" loading="lazy"></a>
           <p>Social listening and marketing intelligence for marketing agencies and in-house teams.</p>
+          <p class="foot-mail">Get in touch at <a href="mailto:hello@getyapscape.com">hello@getyapscape.com</a></p>
+          <a class="foot-social" href="https://www.linkedin.com/company/yapscape/" target="_blank" rel="noopener" aria-label="Yapscape on LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.23 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.72V1.72C24 .77 23.21 0 22.23 0z"/></svg><span>LinkedIn</span></a>
           <a class="btn btn-primary btn-sm" href="/#early-access">Get early access</a>
         </div>
         <nav class="foot-col" aria-label="Product">
@@ -552,7 +558,7 @@
         celebrate();
       } catch (_) {
         status.className = 'status error';
-        status.textContent = 'Something went wrong sending that. Please try again, or email us directly.';
+        status.textContent = 'Something went wrong sending that. Please try again, or email us at hello@getyapscape.com.';
       } finally {
         btn.disabled = false;
       }
